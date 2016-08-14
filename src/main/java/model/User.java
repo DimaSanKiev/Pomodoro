@@ -5,6 +5,8 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 
 import javax.persistence.*;
 import javax.validation.constraints.Size;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 public class User {
@@ -30,6 +32,9 @@ public class User {
 
     private String[] roles;
 
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    private List<Quest> quests;
+
     public User() {
         this.id = null;
         this.username = null;
@@ -42,6 +47,7 @@ public class User {
         this();
         this.username = username;
         setPassword(password);
+        quests = new ArrayList<>();
     }
 
     public Long getId() {
@@ -84,11 +90,27 @@ public class User {
         this.password = PASSWORD_ENCODER.encode(password);
     }
 
+    public boolean isEnabled() {
+        return enabled;
+    }
+
+    public void setEnabled(boolean enabled) {
+        this.enabled = enabled;
+    }
+
     public String[] getRoles() {
         return roles;
     }
 
     public void setRoles(String[] roles) {
         this.roles = roles;
+    }
+
+    public List<Quest> getQuests() {
+        return quests;
+    }
+
+    public void setQuests(List<Quest> quests) {
+        this.quests = quests;
     }
 }
