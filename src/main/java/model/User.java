@@ -1,15 +1,19 @@
 package model;
 
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 import javax.persistence.*;
 import javax.validation.constraints.Size;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 @Entity
-public class User {
+public class User implements UserDetails {
 
     public static final PasswordEncoder PASSWORD_ENCODER = new BCryptPasswordEncoder();
 
@@ -19,6 +23,8 @@ public class User {
 
     private String firstName;
     private String lastName;
+
+    private boolean soundAlert;
 
     @Column(unique = true)
     @Size(min = 3, max = 20)
@@ -30,7 +36,9 @@ public class User {
     @Column(nullable = false)
     private boolean enabled;
 
-    private String[] roles;
+    @OneToOne
+    @JoinColumn(name = "role_id")
+    private Role role;
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private List<Quest> quests;
@@ -39,8 +47,9 @@ public class User {
         this.id = null;
         this.username = null;
         this.password = null;
+        this.soundAlert = true;
         this.enabled = true;
-        this.roles = null;
+        this.role = null;
     }
 
     public User(String username, String password) {
@@ -48,6 +57,28 @@ public class User {
         this.username = username;
         setPassword(password);
         quests = new ArrayList<>();
+    }
+
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        List<GrantedAuthority> authorities = new ArrayList<>();
+        authorities.add(new SimpleGrantedAuthority(role.getName()));
+        return authorities;
+    }
+
+    @Override
+    public boolean isAccountNonExpired() {
+        return false;
+    }
+
+    @Override
+    public boolean isAccountNonLocked() {
+        return false;
+    }
+
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return false;
     }
 
     public Long getId() {
@@ -74,6 +105,14 @@ public class User {
         this.lastName = lastName;
     }
 
+    public boolean isSoundAlert() {
+        return soundAlert;
+    }
+
+    public void setSoundAlert(boolean soundAlert) {
+        this.soundAlert = soundAlert;
+    }
+
     public String getUsername() {
         return username;
     }
@@ -98,12 +137,12 @@ public class User {
         this.enabled = enabled;
     }
 
-    public String[] getRoles() {
-        return roles;
+    public Role getRole() {
+        return role;
     }
 
-    public void setRoles(String[] roles) {
-        this.roles = roles;
+    public void setRole(Role role) {
+        this.role = role;
     }
 
     public List<Quest> getQuests() {
