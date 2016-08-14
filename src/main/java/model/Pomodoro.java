@@ -1,6 +1,7 @@
 package model;
 
 import javax.persistence.*;
+import javax.validation.constraints.Size;
 
 @Entity
 public class Pomodoro {
@@ -9,8 +10,11 @@ public class Pomodoro {
     private Long id;
 
     private int workTime;
-
     private int breakTime;
+    private int remainingTime;
+
+    @Size(max = 50)
+    private String comment;
 
     @ManyToOne
     @JoinColumn(name = "user_id")
@@ -43,6 +47,22 @@ public class Pomodoro {
 
     public void setBreakTime(int breakTime) {
         this.breakTime = breakTime;
+    }
+
+    public int getRemainingTime() {
+        return remainingTime;
+    }
+
+    public void setRemainingTime(int remainingTime) {
+        this.remainingTime = remainingTime;
+    }
+
+    public String getComment() {
+        return comment;
+    }
+
+    public void setComment(String comment) {
+        this.comment = comment;
     }
 
     public User getUser() {
