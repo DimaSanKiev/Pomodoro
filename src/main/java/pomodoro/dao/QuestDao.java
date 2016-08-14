@@ -1,6 +1,6 @@
-package dao;
+package pomodoro.dao;
 
-import model.Quest;
+import pomodoro.model.Quest;
 import org.springframework.data.repository.CrudRepository;
 
 public interface QuestDao extends CrudRepository<Quest, Long> {

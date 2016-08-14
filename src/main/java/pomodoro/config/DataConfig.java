@@ -1,4 +1,4 @@
-package config;
+package pomodoro.config;
 
 import org.apache.tomcat.dbcp.dbcp2.BasicDataSource;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,7 +14,7 @@ import javax.sql.DataSource;
 import java.util.Properties;
 
 @Configuration
-@EnableJpaRepositories(basePackages = "dao")
+@EnableJpaRepositories(basePackages = "pomodoro.dao")
 @PropertySource("application.properties")
 public class DataConfig {
     @Autowired

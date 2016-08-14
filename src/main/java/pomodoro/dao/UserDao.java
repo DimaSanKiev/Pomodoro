@@ -1,6 +1,6 @@
-package dao;
+package pomodoro.dao;
 
-import model.User;
+import pomodoro.model.User;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
