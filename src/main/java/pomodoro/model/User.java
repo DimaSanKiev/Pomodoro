@@ -40,7 +40,7 @@ public class User implements UserDetails {
     @JoinColumn(name = "role_id")
     private Role role;
 
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    @OneToMany(cascade = CascadeType.ALL)
     private List<Quest> quests;
 
     public User() {
