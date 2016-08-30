@@ -13,4 +13,8 @@ public interface PomodoroService {
     void save(Pomodoro pomodoro);
 
     void delete(Pomodoro pomodoro);
+
+    void play(Pomodoro pomodoro);
+
+    void pause(Pomodoro pomodoro);
 }
