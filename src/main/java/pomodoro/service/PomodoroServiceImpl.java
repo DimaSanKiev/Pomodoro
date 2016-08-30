@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import pomodoro.dao.PomodoroDao;
 import pomodoro.model.Pomodoro;
+import pomodoro.service.exception.PomodoroNotFoundException;
 
 import java.util.List;
 
