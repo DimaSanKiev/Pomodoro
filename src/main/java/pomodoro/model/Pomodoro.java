@@ -2,6 +2,7 @@ package pomodoro.model;
 
 import javax.persistence.*;
 import javax.validation.constraints.Size;
+import java.util.Date;
 
 @Entity
 public class Pomodoro {
@@ -12,6 +13,7 @@ public class Pomodoro {
     private int workTime;
     private int breakTime;
     private int remainingTime;
+    private Date date;
 
     @Size(max = 50)
     private String comment;
@@ -55,6 +57,14 @@ public class Pomodoro {
 
     public void setRemainingTime(int remainingTime) {
         this.remainingTime = remainingTime;
+    }
+
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
     }
 
     public String getComment() {
