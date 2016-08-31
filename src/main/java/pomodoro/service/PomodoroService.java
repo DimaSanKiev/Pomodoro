@@ -14,7 +14,7 @@ public interface PomodoroService {
 
     void delete(Pomodoro pomodoro);
 
-    void play(Pomodoro pomodoro);
+    void togglePlay(Pomodoro pomodoro);
 
-    void pause(Pomodoro pomodoro);
+    void countdown(Pomodoro pomodoro);
 }

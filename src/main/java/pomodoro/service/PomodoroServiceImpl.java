@@ -7,6 +7,8 @@ import pomodoro.model.Pomodoro;
 import pomodoro.service.exception.PomodoroNotFoundException;
 
 import java.util.List;
+import java.util.Timer;
+import java.util.TimerTask;
 
 @Service
 public class PomodoroServiceImpl implements PomodoroService {
@@ -39,12 +41,29 @@ public class PomodoroServiceImpl implements PomodoroService {
     }
 
     @Override
-    public void play(Pomodoro pomodoro) {
-        // TODO: 31.08.2016
+    public void togglePlay(Pomodoro pomodoro) {
+        pomodoro.setPaused(!pomodoro.isPaused());
     }
 
     @Override
-    public void pause(Pomodoro pomodoro) {
-        // TODO: 31.08.2016
+    public void countdown(Pomodoro pomodoro) {
+        final Timer timer = new Timer();
+
+        timer.scheduleAtFixedRate(new TimerTask() {
+            int remainingTime = pomodoro.getRemainingTime();
+
+            @Override
+            public void run() {
+                System.out.println(remainingTime--);
+
+                if (pomodoro.isPaused()) {
+                    timer.cancel();
+                }
+
+                if (remainingTime < 0) {
+                    timer.cancel();
+                }
+            }
+        }, 0, 1000);
     }
 }
