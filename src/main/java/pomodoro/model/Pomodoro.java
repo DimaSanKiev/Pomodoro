@@ -9,22 +9,21 @@ public class Pomodoro {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
     private int workTime;
     private int breakTime;
     private int remainingTime;
-    private Date date;
-
+    private Date dateStart;
+    private Date dateFinish;
+    private boolean paused;
     @Size(max = 50)
     private String comment;
-
     @ManyToOne
     @JoinColumn(name = "user_id")
     private User user;
 
     public Pomodoro() {
-        this.workTime = 25 * 60;
-        this.breakTime = 5 * 60;
+        this.workTime = 6 * 1000;
+        this.breakTime = 3 * 1000;
     }
 
     public Long getId() {
@@ -59,12 +58,28 @@ public class Pomodoro {
         this.remainingTime = remainingTime;
     }
 
-    public Date getDate() {
-        return date;
+    public Date getDateStart() {
+        return dateStart;
     }
 
-    public void setDate(Date date) {
-        this.date = date;
+    public void setDateStart(Date dateStart) {
+        this.dateStart = dateStart;
+    }
+
+    public Date getDateFinish() {
+        return dateFinish;
+    }
+
+    public void setDateFinish(Date dateFinish) {
+        this.dateFinish = dateFinish;
+    }
+
+    public boolean isPaused() {
+        return paused;
+    }
+
+    public void setPaused(boolean paused) {
+        this.paused = paused;
     }
 
     public String getComment() {
