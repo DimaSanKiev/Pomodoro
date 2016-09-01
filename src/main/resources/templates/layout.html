@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en"
       xmlns:th="http://www.thymeleaf.org"
-      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security" xmlns="http://www.w3.org/1999/html">
 
 <head th:fragment="head" lang="en">
     <meta charset="UTF-8"/>
@@ -11,14 +11,17 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/css/materialize.min.css"/>
     <link rel="stylesheet" th:href="@{/assets/css/application.css}"/>
 
-    <title>TodoToday</title>
+    <title>Pomodoro</title>
 </head>
 
 <body>
 <nav th:fragment="nav">
     <div class="container">
         <div class="nav-wrapper">
-            <a href="#" class="brand-logo">TodoToday</a>
+            <a href="#" class="brand-logo">
+                <img th:src="@{/assets/images/tomato.png}" class="pomodoro-logo" alt="Pomodoro Logo"/>
+                Pomodoro
+            </a>
             <ul class="right">
                 <li sec:authentication="name"></li>
                 <li>
