@@ -25,7 +25,7 @@ repositories {
 }
 
 dependencies {
-//    compile 'org.springframework.boot:spring-boot-starter-security'
+    compile 'org.springframework.boot:spring-boot-starter-security'
     compile 'org.springframework.boot:spring-boot-starter-thymeleaf'
     compile 'org.springframework:spring-orm:4.3.2.RELEASE'
     compile 'org.springframework.data:spring-data-jpa:1.10.2.RELEASE'
