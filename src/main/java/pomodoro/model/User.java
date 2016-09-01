@@ -21,9 +21,13 @@ public class User implements UserDetails {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(name = "first_name")
     private String firstName;
+
+    @Column(name = "last_name")
     private String lastName;
 
+    @Column(name = "sound_alert")
     private boolean soundAlert;
 
     @Column(unique = true)
@@ -41,6 +45,9 @@ public class User implements UserDetails {
     private Role role;
 
     @OneToMany(cascade = CascadeType.ALL)
+    @JoinTable(name = "user_quests",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "quest_id"))
     private List<Quest> quests;
 
     public User() {

@@ -12,7 +12,7 @@ public class Quest {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Size(min = 3, max = 20)
+    @Size(min = 3, max = 30)
     private String name;
 
     public Long getId() {
