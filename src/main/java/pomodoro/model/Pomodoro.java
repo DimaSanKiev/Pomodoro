@@ -17,9 +17,6 @@ public class Pomodoro {
     private boolean paused;
     @Size(max = 50)
     private String comment;
-    @ManyToOne
-    @JoinColumn(name = "user_id")
-    private User user;
 
     public Pomodoro() {
         this.workTime = 6 * 1000;
@@ -90,11 +87,4 @@ public class Pomodoro {
         this.comment = comment;
     }
 
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
-    }
 }
