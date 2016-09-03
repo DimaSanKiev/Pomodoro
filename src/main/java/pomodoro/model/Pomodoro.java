@@ -9,18 +9,16 @@ public class Pomodoro {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private int workTime;
-    private int breakTime;
-    private int remainingTime;
+    private int remainingSeconds;
+    private PomodoroKind kind;
     private Date dateStart;
     private Date dateFinish;
-    private boolean paused;
     @Size(max = 50)
     private String comment;
 
-    public Pomodoro() {
-        this.workTime = 6 * 1000;
-        this.breakTime = 3 * 1000;
+    public Pomodoro(PomodoroKind kind) {
+        this.kind = kind;
+        remainingSeconds = kind.getTotalSeconds();
     }
 
     public Long getId() {
@@ -31,28 +29,20 @@ public class Pomodoro {
         this.id = id;
     }
 
-    public int getWorkTime() {
-        return workTime;
+    public int getRemainingSeconds() {
+        return remainingSeconds;
     }
 
-    public void setWorkTime(int workTime) {
-        this.workTime = workTime;
+    public void setRemainingSeconds(int remainingSeconds) {
+        this.remainingSeconds = remainingSeconds;
     }
 
-    public int getBreakTime() {
-        return breakTime;
+    public PomodoroKind getKind() {
+        return kind;
     }
 
-    public void setBreakTime(int breakTime) {
-        this.breakTime = breakTime;
-    }
-
-    public int getRemainingTime() {
-        return remainingTime;
-    }
-
-    public void setRemainingTime(int remainingTime) {
-        this.remainingTime = remainingTime;
+    public void setKind(PomodoroKind kind) {
+        this.kind = kind;
     }
 
     public Date getDateStart() {
@@ -71,14 +61,6 @@ public class Pomodoro {
         this.dateFinish = dateFinish;
     }
 
-    public boolean isPaused() {
-        return paused;
-    }
-
-    public void setPaused(boolean paused) {
-        this.paused = paused;
-    }
-
     public String getComment() {
         return comment;
     }
@@ -86,5 +68,4 @@ public class Pomodoro {
     public void setComment(String comment) {
         this.comment = comment;
     }
-
 }
