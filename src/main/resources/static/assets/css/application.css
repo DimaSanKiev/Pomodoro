@@ -27,7 +27,13 @@ nav .nav-wrapper .brand-logo {
     padding-bottom: 5px;
 }
 
-.logout button {
+.pomodoro .pomodoro-timer {
+    text-align: center;
+    padding: 20px;
+}
+
+
+.icons button {
     border: none;
     background: transparent;
 }
