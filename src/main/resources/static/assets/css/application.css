@@ -29,9 +29,41 @@ nav .nav-wrapper .brand-logo {
 
 .pomodoro .pomodoro-timer {
     text-align: center;
-    padding: 20px;
 }
 
+.pomodoro-timer {
+    font-family: "Helvetica";
+    color: #4c4c4c;
+    font-size: 60px;
+    padding: 5px;
+    width: 55%;
+    margin: 50px auto 20px;
+    border: #8a8a8a;
+    border: solid;
+    border-width: 2px;
+    border-radius: 10px;
+    border-color: darkgray;
+}
+
+.buttons {
+    text-align: center;
+    font-size: 25px;
+}
+
+.buttons button {
+    width: 150px;
+    background-color: royalblue;
+    font-family: Arial, serif;
+    border-radius: 20px;
+    color: #ffffff;
+    padding: 10px 20px 10px 20px;
+    text-decoration: none;
+}
+
+.buttons button:hover {
+    background: #3cb0fd;
+    text-decoration: none;
+}
 
 .icons button {
     border: none;

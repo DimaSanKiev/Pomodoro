@@ -8,7 +8,7 @@
     <meta description="viewport" content="width=device-width, initial-scale=1"/>
 
     <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/css/materialize.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/css/materialize.min.css"/>
     <link rel="stylesheet" th:href="@{/assets/css/application.css}"/>
 
     <title>Pomodoro</title>
@@ -25,7 +25,17 @@
             <ul class="right">
                 <li sec:authentication="name"></li>
                 <li>
-                    <form class="logout inline" th:action="@{/logout}" method="post">
+                    <form class="icons inline" th:action="@{/login}" method="post">
+                        <button type="submit"><i class="material-icons">input</i></button>
+                    </form>
+                </li>
+                <li>
+                    <form class="icons inline" th:action="@{/statistics}" method="post">
+                        <button type="submit"><i class="material-icons">list</i></button>
+                    </form>
+                </li>
+                <li>
+                    <form class="icons inline" th:action="@{/logout}" method="post">
                         <button type="submit"><i class="material-icons">power_settings_new</i></button>
                     </form>
                 </li>
@@ -33,6 +43,23 @@
         </div>
     </div>
 </nav>
+
+<div class="container">
+    <div class="row">
+        <div class="col s12 m6 offset-m3">
+            <div class="pomodoro">
+                <div class="pomodoro-timer">
+                    25:00
+                </div>
+
+                <div class="buttons">
+                    <button>Start</button>
+                    <button>Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
 <div th:fragment="scripts">
     <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
