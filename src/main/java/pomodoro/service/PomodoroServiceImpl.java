@@ -4,19 +4,25 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import pomodoro.dao.PomodoroDao;
 import pomodoro.model.Pomodoro;
-import pomodoro.service.exception.PomodoroNotFoundException;
-
-import java.util.List;
-import java.util.Timer;
-import java.util.TimerTask;
+import pomodoro.model.PomodoroKind;
 
 @Service
 public class PomodoroServiceImpl implements PomodoroService {
-
     @Autowired
     private PomodoroDao pomodoroDao;
 
     @Override
+    public void togglePlay(Pomodoro pomodoro) {
+        // TODO: 04.09.2016
+    }
+
+    @Override
+    public void cancel(Pomodoro pomodoro) {
+        pomodoro.getCountdown().cancel();
+        pomodoro = new Pomodoro(PomodoroKind.WORK);
+    }
+
+    /*@Override
     public List<Pomodoro> findAll() {
         return pomodoroDao.findAll();
     }
@@ -33,37 +39,5 @@ public class PomodoroServiceImpl implements PomodoroService {
     @Override
     public void save(Pomodoro pomodoro) {
         pomodoroDao.save(pomodoro);
-    }
-
-    @Override
-    public void delete(Pomodoro pomodoro) {
-        pomodoroDao.delete(pomodoro);
-    }
-
-    @Override
-    public void togglePlay(Pomodoro pomodoro) {
-        pomodoro.setPaused(!pomodoro.isPaused());
-    }
-
-    @Override
-    public void countdown(Pomodoro pomodoro) {
-        final Timer timer = new Timer();
-
-        timer.scheduleAtFixedRate(new TimerTask() {
-            int remainingTime = pomodoro.getRemainingTime();
-
-            @Override
-            public void run() {
-                System.out.println(remainingTime--);
-
-                if (pomodoro.isPaused()) {
-                    timer.cancel();
-                }
-
-                if (remainingTime < 0) {
-                    timer.cancel();
-                }
-            }
-        }, 0, 1000);
-    }
+    }*/
 }

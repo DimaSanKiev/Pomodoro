@@ -11,6 +11,7 @@ public class Pomodoro {
     private Long id;
     private int remainingSeconds;
     private PomodoroKind kind;
+    private Countdown countdown;
     private Date dateStart;
     private Date dateFinish;
     @Size(max = 50)
@@ -43,6 +44,14 @@ public class Pomodoro {
 
     public void setKind(PomodoroKind kind) {
         this.kind = kind;
+    }
+
+    public Countdown getCountdown() {
+        return countdown;
+    }
+
+    public void setCountdown(Countdown countdown) {
+        this.countdown = countdown;
     }
 
     public Date getDateStart() {

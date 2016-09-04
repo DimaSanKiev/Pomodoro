@@ -53,8 +53,10 @@
                 </div>
 
                 <div class="buttons">
-                    <button>Start</button>
-                    <button>Cancel</button>
+                    <form th:action="@{/toggle}" data-th-object="${model}" method="post">
+                        <button type="submit" value="start">Start</button>
+                        <button type="submit" value="cancel">Cancel</button>
+                    </form>
                 </div>
             </div>
         </div>

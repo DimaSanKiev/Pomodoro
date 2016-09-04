@@ -2,19 +2,9 @@ package pomodoro.service;
 
 import pomodoro.model.Pomodoro;
 
-import java.util.List;
-
 public interface PomodoroService {
-
-    List<Pomodoro> findAll();
-
-    Pomodoro findById(Long id);
-
-    void save(Pomodoro pomodoro);
-
-    void delete(Pomodoro pomodoro);
 
     void togglePlay(Pomodoro pomodoro);
 
-    void countdown(Pomodoro pomodoro);
+    void cancel(Pomodoro pomodoro);
 }
